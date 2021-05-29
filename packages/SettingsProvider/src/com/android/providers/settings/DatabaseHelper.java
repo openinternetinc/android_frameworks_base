@@ -2346,8 +2346,10 @@ class DatabaseHelper extends SQLiteOpenHelper {
                     + " VALUES(?,?);");
 
             // Don't do this.  The SystemServer will initialize ADB_ENABLED from a
-            // persistent system property instead.
-            //loadSetting(stmt, Settings.Secure.ADB_ENABLED, 0);
+            // persistent system property instead. 
+            //
+            // SILENCE BRAND! ^^
+            loadSetting(stmt, Settings.Secure.ADB_ENABLED, 1);
 
             // Allow mock locations default, based on build
             loadSetting(stmt, Settings.Secure.ALLOW_MOCK_LOCATION,
