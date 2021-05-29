@@ -2448,6 +2448,20 @@ class DatabaseHelper extends SQLiteOpenHelper {
             stmt = db.compileStatement("INSERT OR IGNORE INTO global(name,value)"
                     + " VALUES(?,?);");
 
+            // --start datos
+            //
+            // stay on while plugged in
+            loadSetting(stmt, Settings.Global.STAY_ON_WHILE_PLUGGED_IN, "2");
+
+            // do not turn off hotspot automatically!!
+            loadSetting(stmt, Settings.Global.SOFT_AP_TIMEOUT_ENABLED, 0);
+
+            // silence ringer by default
+            loadSetting(stmt, Settings.Global.MODE_RINGER, 0);
+            loadSetting(stmt, "volume_ring_speaker", 0);
+
+            // ---end datos
+
             // --- Previously in 'system'
             loadBooleanSetting(stmt, Settings.Global.AIRPLANE_MODE_ON,
                     R.bool.def_airplane_mode_on);
